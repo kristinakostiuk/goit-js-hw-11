@@ -8,8 +8,8 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css"; 
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import { fetchPhotosByPixabay } from "./js/pixabay-api";
-import { createGallery } from "./js/render-functions";
+import { fetchPhotosByPixabay } from "./pixabay-api";
+import { createGallery } from "./render-functions";
 
 function showMessage(message, type = 'error') {
     iziToast[type]({
