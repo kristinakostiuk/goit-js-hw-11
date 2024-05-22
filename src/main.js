@@ -1,7 +1,5 @@
 const refs = {
     form: document.querySelector('.form'),
-    input: document.querySelector('.form-input'),
-    button: document.querySelector('.form-btn'),
     galleryList: document.querySelector('.card-list'),
     loader: document.querySelector('.loader')
 }
