@@ -11,6 +11,8 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import { fetchPhotosByPixabay } from "./js/pixabay-api";
 import { createGallery } from "./js/render-functions";
 
+const lightbox = new SimpleLightbox('.card-list a');
+
 function showMessage(message, type = 'error') {
     iziToast[type]({
         message: message,
@@ -33,6 +35,7 @@ function onSearchFormSubmit(event) {
         .then(imagesData => {
             if (imagesData.hits.length === 0) {
                 showMessage('Sorry, there are no images matching your search query. Please try again!');
+                refs.galleryList.innerHTML = '';
                 return;
             }
             return imagesData;
@@ -40,11 +43,9 @@ function onSearchFormSubmit(event) {
         .then(imagesData => {
             const markup = createGallery(imagesData.hits);
             refs.galleryList.innerHTML = markup;
-            const lightbox = new SimpleLightbox('.card-list a');
+            lightbox.refresh();
         })
-        .catch(error => {
-            console.error('Error:', error);
-        })
+        .catch(error => {})
         .finally(() => {
             event.target.reset();
             refs.loader.classList.add('is-hidden');
